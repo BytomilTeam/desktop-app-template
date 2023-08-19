@@ -1,0 +1,103 @@
+{
+  "name": "desktop-app-template",
+  "productName": "App Template",
+  "author": "Bytomil Team",
+  "description": "A template app for React and Electron",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@mantine/carousel": "^6.0.19",
+    "@mantine/core": "^6.0.19",
+    "@mantine/dates": "^6.0.19",
+    "@mantine/dropzone": "^6.0.19",
+    "@mantine/form": "^6.0.19",
+    "@mantine/hooks": "^6.0.19",
+    "@mantine/modals": "^6.0.19",
+    "@mantine/notifications": "^6.0.19",
+    "@mantine/nprogress": "^6.0.19",
+    "@mantine/prism": "^6.0.19",
+    "@mantine/spotlight": "^6.0.19",
+    "@mantine/tiptap": "^6.0.19",
+    "@tabler/icons-react": "^2.31.0",
+    "@tiptap/extension-link": "^2.1.6",
+    "@tiptap/react": "^2.1.6",
+    "@tiptap/starter-kit": "^2.1.6",
+    "dayjs": "^1.11.9",
+    "electron-is-dev": "^2.0.0",
+    "embla-carousel-react": "^7.1.0"
+  },
+  "main": "public/main.js",
+  "homepage": "./",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "electron:serve": "concurrently -k \"cross-env BROWSER=none npm run start\" \"npm run electron:start\"",
+    "electron:build": "npm run build && electron-builder -c.extraMetadata.main=build/main.js",
+    "electron:start": "wait-port 3000 && electron ."
+  },
+  "build": {
+    "appId": "com.BytomilTeam.AppTemplate",
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb",
+        "rpm"
+      ]
+    },
+    "win": {
+      "target": "NSIS"
+    },
+    "nsis": {
+      "oneClick": true,
+      "license": "LICENSE",
+      "allowToChangeInstallationDirectory": false
+    },
+    "asar": true,
+    "files": [
+      "dist/**/*",
+      "build/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "7.21.11",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "concurrently": "^8.2.0",
+    "cross-env": "^7.0.3",
+    "electron": "26.0.0",
+    "electron-builder": "24.6.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "wait-port": "^1.0.4",
+    "web-vitals": "^2.1.4"
+  }
+}
